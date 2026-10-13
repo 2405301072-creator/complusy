@@ -1,0 +1,386 @@
+/* ===================================================================
+   CAMPUSLY 3D - STUDENT GROWTH COMMAND CENTER
+   PREMIUM EDITORIAL SAAS DESIGN SYSTEM
+   Palette: Warm Ivory, Clean White, Deep Emerald, Mint, Soft Lavender, Champagne Gold
+   =================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap');
+
+/* ===================================================================
+   1. COLOR TOKENS & COMMAND CENTER THEME
+   =================================================================== */
+
+:root,
+body[data-theme="emerald-elite"] {
+  --theme-name: "Emerald Command Center";
+  /* Deep prestigious canvas with rich contrast */
+  --bg-canvas: #04120e;
+  --bg-surface: #0a1f18;
+  --bg-surface-low: #071712;
+  --bg-surface-high: #112d23;
+  --bg-surface-highest: #1a3d30;
+  --bg-surface-lowest: #020a07;
+  
+  /* Refined Glass & Card Layers */
+  --bg-card: rgba(10, 31, 24, 0.78);
+  --bg-card-hover: rgba(17, 45, 35, 0.88);
+  --border-card: rgba(189, 232, 208, 0.16);
+  --border-card-hover: rgba(189, 232, 208, 0.35);
+  
+  /* Primary & Accent Accents */
+  --primary-accent: #38e4a0;
+  --primary-bright: #f4fff9;
+  --primary-mint: #a8edd0;
+  --primary-container: #144434;
+  
+  /* Editorial Palette Highlights */
+  --champagne-gold: #e8c872;
+  --champagne-gold-dim: #997e3a;
+  --lavender-soft: #c4b5fd;
+  --lavender-container: #2e264a;
+  --warm-ivory: #faf8f5;
+  
+  --error-color: #f87171;
+  --error-container: rgba(153, 27, 27, 0.35);
+  
+  /* High-legibility Typography */
+  --text-primary: #f8faf9;
+  --text-secondary: #cde2d8;
+  --text-muted: #839b90;
+  --text-ivory: #fdfbf7;
+  
+  --shadow-subtle: 0 4px 20px -2px rgba(0, 0, 0, 0.4);
+  --shadow-elevated: 0 12px 36px -4px rgba(0, 0, 0, 0.55);
+}
+
+body[data-theme="sakura-dream"] {
+  --theme-name: "Sakura Dream";
+  --bg-canvas: #120815;
+  --bg-surface: #1d0f22;
+  --bg-surface-low: #160a1a;
+  --bg-surface-high: #2b1633;
+  --bg-surface-highest: #3d1f47;
+  --bg-surface-lowest: #0b040d;
+  --bg-card: rgba(29, 15, 34, 0.8);
+  --bg-card-hover: rgba(43, 22, 51, 0.9);
+  --border-card: rgba(244, 184, 218, 0.2);
+  --border-card-hover: rgba(244, 184, 218, 0.45);
+  --primary-accent: #f472b6;
+  --primary-bright: #fff1f8;
+  --primary-mint: #f9a8d4;
+  --primary-container: #4c1d47;
+  --champagne-gold: #fde047;
+  --lavender-soft: #ddd6fe;
+  --lavender-container: #3b2856;
+  --warm-ivory: #fdfbf7;
+  --error-color: #fb7185;
+  --text-primary: #fff5fa;
+  --text-secondary: #f0d5e5;
+  --text-muted: #9f8796;
+}
+
+body[data-theme="midnight-galaxy"] {
+  --theme-name: "Midnight Galaxy";
+  --bg-canvas: #050814;
+  --bg-surface: #0c1228;
+  --bg-surface-low: #080c1d;
+  --bg-surface-high: #141d40;
+  --bg-surface-highest: #1f2b5a;
+  --bg-surface-lowest: #02040c;
+  --bg-card: rgba(12, 18, 40, 0.8);
+  --bg-card-hover: rgba(20, 29, 64, 0.9);
+  --border-card: rgba(110, 186, 255, 0.18);
+  --border-card-hover: rgba(110, 186, 255, 0.45);
+  --primary-accent: #38bdf8;
+  --primary-bright: #f0f9ff;
+  --primary-mint: #bae6fd;
+  --primary-container: #163660;
+  --champagne-gold: #fde047;
+  --lavender-soft: #a78bfa;
+  --lavender-container: #2a2254;
+  --warm-ivory: #fdfbf7;
+  --error-color: #f87171;
+  --text-primary: #f5f8ff;
+  --text-secondary: #cbd5e1;
+  --text-muted: #7f8ea3;
+}
+
+body[data-theme="cyber-neon"] {
+  --theme-name: "Cyber Neon";
+  --bg-canvas: #080b0e;
+  --bg-surface: #10161d;
+  --bg-surface-low: #0b0f14;
+  --bg-surface-high: #19222c;
+  --bg-surface-highest: #24313f;
+  --bg-surface-lowest: #040608;
+  --bg-card: rgba(16, 22, 29, 0.82);
+  --bg-card-hover: rgba(25, 34, 44, 0.92);
+  --border-card: rgba(0, 255, 136, 0.2);
+  --border-card-hover: rgba(0, 255, 136, 0.5);
+  --primary-accent: #00ff88;
+  --primary-bright: #f0fff7;
+  --primary-mint: #86efac;
+  --primary-container: #064e3b;
+  --champagne-gold: #facc15;
+  --lavender-soft: #22d3ee;
+  --lavender-container: #164e63;
+  --warm-ivory: #fdfbf7;
+  --error-color: #f43f5e;
+  --text-primary: #f0fff6;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
+}
+
+body[data-theme="sunset-aura"] {
+  --theme-name: "Sunset Aura";
+  --bg-canvas: #150804;
+  --bg-surface: #241108;
+  --bg-surface-low: #1b0c06;
+  --bg-surface-high: #351a0d;
+  --bg-surface-highest: #4a2514;
+  --bg-surface-lowest: #0c0402;
+  --bg-card: rgba(36, 17, 8, 0.82);
+  --bg-card-hover: rgba(53, 26, 13, 0.92);
+  --border-card: rgba(251, 146, 60, 0.2);
+  --border-card-hover: rgba(251, 146, 60, 0.5);
+  --primary-accent: #fb923c;
+  --primary-bright: #fff7ed;
+  --primary-mint: #fed7aa;
+  --primary-container: #7c2d12;
+  --champagne-gold: #facc15;
+  --lavender-soft: #f472b6;
+  --lavender-container: #501d36;
+  --warm-ivory: #fdfbf7;
+  --error-color: #ef4444;
+  --text-primary: #fff8f5;
+  --text-secondary: #fed7aa;
+  --text-muted: #9a7b6e;
+}
+
+body[data-theme="minimal-focus"] {
+  --theme-name: "Minimal Focus";
+  --bg-canvas: #0f1315;
+  --bg-surface: #181f22;
+  --bg-surface-low: #13181a;
+  --bg-surface-high: #222b30;
+  --bg-surface-highest: #2e3a40;
+  --bg-surface-lowest: #090c0d;
+  --bg-card: rgba(24, 31, 34, 0.85);
+  --bg-card-hover: rgba(34, 43, 48, 0.92);
+  --border-card: rgba(203, 213, 225, 0.12);
+  --border-card-hover: rgba(203, 213, 225, 0.35);
+  --primary-accent: #6ee7b7;
+  --primary-bright: #f0fdf4;
+  --primary-mint: #a7f3d0;
+  --primary-container: #1e3a30;
+  --champagne-gold: #fde68a;
+  --lavender-soft: #cbd5e1;
+  --lavender-container: #334155;
+  --warm-ivory: #fdfbf7;
+  --error-color: #f87171;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
+}
+
+/* ===================================================================
+   2. CORE TYPOGRAPHY & LAYOUT RESET
+   =================================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, .font-heading {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.025em;
+}
+
+.font-mono, .mono {
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: -0.02em;
+}
+
+.font-label {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bg-surface-highest);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-accent);
+}
+
+/* ===================================================================
+   3. SAAS COMMAND CENTER CARD ARCHITECTURE
+   =================================================================== */
+
+.cmd-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid var(--border-card);
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow-subtle),
+              inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  transition: border-color 0.22s ease,
+              box-shadow 0.22s ease,
+              transform 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cmd-card:hover {
+  border-color: var(--border-card-hover);
+  box-shadow: var(--shadow-elevated);
+}
+
+.cmd-card-subtle {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-card);
+  border-radius: 1rem;
+}
+
+.cmd-pill {
+  background: var(--bg-surface-high);
+  border: 1px solid var(--border-card);
+  backdrop-filter: blur(12px);
+  transition: all 0.2s ease;
+}
+
+.cmd-pill:hover {
+  border-color: var(--primary-accent);
+  background: var(--bg-surface-highest);
+}
+
+/* Editorial Button Styles */
+.cmd-btn-primary {
+  background: var(--primary-accent);
+  color: #04120e;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  border-radius: 0.75rem;
+  padding: 0.625rem 1.25rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(56, 228, 160, 0.22);
+  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cmd-btn-primary:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(56, 228, 160, 0.32);
+}
+
+.cmd-btn-primary:active {
+  transform: scale(0.98);
+}
+
+.cmd-btn-secondary {
+  background: var(--bg-surface-high);
+  color: var(--text-primary);
+  border: 1px solid var(--border-card);
+  border-radius: 0.75rem;
+  padding: 0.625rem 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.cmd-btn-secondary:hover {
+  background: var(--bg-surface-highest);
+  border-color: var(--primary-accent);
+}
+
+/* Input Fields */
+.cmd-input {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-card);
+  color: var(--text-primary);
+  border-radius: 0.75rem;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.cmd-input:focus {
+  outline: none;
+  border-color: var(--primary-accent);
+  box-shadow: 0 0 0 3px rgba(56, 228, 160, 0.15);
+}
+
+/* ===================================================================
+   4. NAVIGATION & VIEW TRANSITIONS
+   =================================================================== */
+
+.nav-link.active {
+  color: var(--primary-bright) !important;
+  background: var(--bg-surface-high) !important;
+  border-color: var(--primary-accent) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  font-weight: 700;
+}
+
+.view-section {
+  display: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.28s ease, transform 0.28s ease;
+}
+
+.view-section.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Floating XP Particle */
+.xp-particle-fly {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  background: var(--champagne-gold);
+  box-shadow: 0 0 12px var(--champagne-gold);
+  transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.75s ease;
+}
+
+/* Asymmetric Accent Bars */
+.accent-bar-gold {
+  position: relative;
+}
+.accent-bar-gold::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15%;
+  bottom: 15%;
+  width: 3px;
+  background: var(--champagne-gold);
+  border-radius: 9999px;
+}

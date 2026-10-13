@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_THREEJS_START:ANIMATION_1 class="fixed inset-0 w-full h-full bg-transparent" -->
+<div class="fixed inset-0 w-full h-full bg-transparent" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_1" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_1') || document.getElementById('nova-canvas-container') || document.body;
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  // Three.js interactive 3D NOVA AI Companion Scene
+  const width = container.clientWidth || 320;
+  const height = container.clientHeight || 280;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+camera.position.set(0, 0, 5.2);
+
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+container.appendChild(renderer.domElement);
+
+// Lighting
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.85);
+scene.add(ambientLight);
+
+const dirLight = new THREE.DirectionalLight(0xbde8d0, 1.2);
+dirLight.position.set(3, 4, 3);
+scene.add(dirLight);
+
+const purpleLight = new THREE.PointLight(0xc8b8f2, 1.5, 10);
+purpleLight.position.set(-2, -1, 2);
+scene.add(purpleLight);
+
+const goldLight = new THREE.PointLight(0xf0c96b, 0.8, 8);
+goldLight.position.set(0, 2.5, 1.5);
+scene.add(goldLight);
+
+// NOVA Robot Group
+const novaGroup = new THREE.Group();
+
+// Materials
+const bodyMat = new THREE.MeshPhongMaterial({
+  color: 0xf8f7f2,
+  specular: 0xbde8d0,
+  shininess: 90
+});
+const mintAccentMat = new THREE.MeshPhongMaterial({
+  color: 0x228b6d,
+  specular: 0xbde8d0,
+  shininess: 100
+});
+const visorMat = new THREE.MeshPhongMaterial({
+  color: 0x10372d,
+  shininess: 120
+});
+const eyeMat = new THREE.MeshBasicMaterial({
+  color: 0x4eedb1
+});
+const goldMat = new THREE.MeshPhongMaterial({
+  color: 0xf0c96b,
+  shininess: 100
+});
+const lavenderGlowMat = new THREE.MeshPhongMaterial({
+  color: 0xc8b8f2,
+  shininess: 80
+});
+
+// Head / Body - Rounded sleek egg-like pod
+const headGeo = new THREE.SphereGeometry(1.0, 32, 32);
+headGeo.scale(1.05, 0.95, 1.0);
+const head = new THREE.Mesh(headGeo, bodyMat);
+novaGroup.add(head);
+
+// Visor (dark screen on face)
+const visorGeo = new THREE.SphereGeometry(0.85, 32, 24, 0, Math.PI * 2, 0, Math.PI * 0.55);
+visorGeo.scale(0.9, 0.58, 0.65);
+const visor = new THREE.Mesh(visorGeo, visorMat);
+visor.position.set(0, 0.1, 0.52);
+visor.rotation.x = Math.PI * 0.45;
+novaGroup.add(visor);
+
+// Expressive Eyes (Mint Glowing pills)
+const eyeGeo = new THREE.CylinderGeometry(0.09, 0.09, 0.28, 16);
+const leftEye = new THREE.Mesh(eyeGeo, eyeMat);
+leftEye.position.set(-0.35, 0.12, 0.96);
+leftEye.rotation.z = Math.PI * 0.08;
+novaGroup.add(leftEye);
+
+const rightEye = new THREE.Mesh(eyeGeo, eyeMat);
+rightEye.position.set(0.35, 0.12, 0.96);
+rightEye.rotation.z = -Math.PI * 0.08;
+novaGroup.add(rightEye);
+
+// Floating Antennas / Ears (Cute winglets)
+const earGeo = new THREE.ConeGeometry(0.25, 0.55, 16);
+const leftEar = new THREE.Mesh(earGeo, mintAccentMat);
+leftEar.position.set(-1.1, 0.45, 0);
+leftEar.rotation.z = Math.PI * 0.38;
+leftEar.rotation.x = -Math.PI * 0.1;
+novaGroup.add(leftEar);
+
+const rightEar = new THREE.Mesh(earGeo, mintAccentMat);
+rightEar.position.set(1.1, 0.45, 0);
+rightEar.rotation.z = -Math.PI * 0.38;
+rightEar.rotation.x = -Math.PI * 0.1;
+novaGroup.add(rightEar);
+
+// Antenna top halo/beacon
+const haloRingGeo = new THREE.TorusGeometry(0.38, 0.04, 16, 32);
+const halo = new THREE.Mesh(haloRingGeo, goldMat);
+halo.position.set(0, 1.25, 0);
+halo.rotation.x = Math.PI * 0.5;
+novaGroup.add(halo);
+
+// Cute Floating Hands
+const handGeo = new THREE.SphereGeometry(0.22, 20, 20);
+const leftHand = new THREE.Mesh(handGeo, lavenderGlowMat);
+leftHand.position.set(-1.05, -0.4, 0.4);
+novaGroup.add(leftHand);
+
+const rightHand = new THREE.Mesh(handGeo, lavenderGlowMat);
+rightHand.position.set(1.05, -0.4, 0.4);
+novaGroup.add(rightHand);
+
+// Floating Thruster / Energy ring below
+const thrustRingGeo = new THREE.TorusGeometry(0.48, 0.06, 16, 32);
+const thrustRing = new THREE.Mesh(thrustRingGeo, mintAccentMat);
+thrustRing.position.set(0, -1.05, 0);
+thrustRing.rotation.x = Math.PI * 0.5;
+novaGroup.add(thrustRing);
+
+// Orbiting sparkle particles
+const particleCount = 28;
+const particleGroup = new THREE.Group();
+const pGeo = new THREE.SphereGeometry(0.045, 8, 8);
+const pMat = new THREE.MeshBasicMaterial({ color: 0xf0c96b });
+const particles = [];
+
+for (let i = 0; i < particleCount; i++) {
+  const p = new THREE.Mesh(pGeo, pMat);
+  const angle = (i / particleCount) * Math.PI * 2;
+  const radius = 1.6 + Math.sin(i * 3) * 0.35;
+  p.position.set(Math.cos(angle) * radius, (Math.random() - 0.5) * 1.6, Math.sin(angle) * radius);
+  p.userData = { angle: angle, speed: 0.015 + Math.random() * 0.02, rad: radius, yBase: p.position.y };
+  particles.push(p);
+  particleGroup.add(p);
+}
+novaGroup.add(particleGroup);
+
+scene.add(novaGroup);
+
+// Mouse & Touch Interaction
+let mouseX = 0;
+let mouseY = 0;
+let targetX = 0;
+let targetY = 0;
+
+function onMove(e) {
+  const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+  const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+  const rect = container.getBoundingClientRect();
+  mouseX = ((clientX - rect.left) / rect.width) * 2 - 1;
+  mouseY = -(((clientY - rect.top) / rect.height) * 2 - 1);
+}
+window.addEventListener('mousemove', onMove);
+window.addEventListener('touchmove', onMove, { passive: true });
+
+// Animation Loop
+let clock = new THREE.Clock();
+
+function animate() {
+  requestAnimationFrame(animate);
+  const t = clock.getElapsedTime();
+
+  // Floating Idle Breathing Motion
+  novaGroup.position.y = Math.sin(t * 1.8) * 0.14;
+  novaGroup.rotation.z = Math.sin(t * 1.2) * 0.05;
+
+  // Gentle look-at cursor tracking
+  targetX = mouseX * 0.45;
+  targetY = mouseY * 0.35;
+  novaGroup.rotation.y += (targetX - novaGroup.rotation.y) * 0.08;
+  novaGroup.rotation.x += (-targetY - novaGroup.rotation.x) * 0.08;
+
+  // Ear wiggle & Halo rotation
+  leftEar.rotation.z = Math.PI * 0.38 + Math.sin(t * 2.5) * 0.08;
+  rightEar.rotation.z = -Math.PI * 0.38 - Math.sin(t * 2.5) * 0.08;
+  halo.rotation.z = t * 0.8;
+  thrustRing.rotation.z = -t * 1.2;
+
+  // Floating hands bobbing
+  leftHand.position.y = -0.4 + Math.cos(t * 2.2) * 0.07;
+  rightHand.position.y = -0.4 + Math.sin(t * 2.2) * 0.07;
+
+  // Orbiting particles
+  particles.forEach(p => {
+    p.userData.angle += p.userData.speed;
+    p.position.x = Math.cos(p.userData.angle) * p.userData.rad;
+    p.position.z = Math.sin(p.userData.angle) * p.userData.rad;
+    p.position.y = p.userData.yBase + Math.sin(t * 3 + p.userData.angle) * 0.15;
+  });
+
+  renderer.render(scene, camera);
+}
+animate();
+
+window.addEventListener('resize', () => {
+  const w = container.clientWidth || 320;
+  const h = container.clientHeight || 280;
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+  renderer.setSize(w, h);
+});
+
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_1 -->
+</body>
+</html>
